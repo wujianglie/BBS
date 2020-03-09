@@ -5,7 +5,6 @@ import java.util.Date;
 public class User {
 	private String userId;
 	private String userPsw;
-	private String rePassword;
 	private String userAlice;
 	private String userEmail;
 	private String userSex;
@@ -16,12 +15,12 @@ public class User {
 	private Date userLock;
 	private Date userCreateDate;
 	public User() {}
-	public User(String userId, String userPsw, String rePassword,String userAlice, String userEmail, String userSex, String userPhoto,
-			double userScore, Integer userLevel, Date levelDown, Date userLock, Date userCreateDate) {
+	
+	public User(String userId, String userPsw,  String userAlice, String userEmail, String userSex,
+			String userPhoto, double userScore, Integer userLevel, Date levelDown, Date userLock, Date userCreateDate) {
 		super();
 		this.userId = userId;
 		this.userPsw = userPsw;
-		this.rePassword=rePassword;
 		this.userAlice = userAlice;
 		this.userEmail = userEmail;
 		this.userSex = userSex;
@@ -32,7 +31,7 @@ public class User {
 		this.userLock = userLock;
 		this.userCreateDate = userCreateDate;
 	}
-	
+
 	public String getUserId() {
 		return userId;
 	}
@@ -41,9 +40,6 @@ public class User {
 	}
 	public String getUserPsw() {
 		return userPsw;
-	}
-	public String getrePassword() {
-		return rePassword;
 	}
 	public void setUserPsw(String userPsw) {
 		this.userPsw = userPsw;
@@ -102,4 +98,5 @@ public class User {
 	public void setUserCreateDate(Date userCreateDate) {
 		this.userCreateDate = userCreateDate;
 	}
+	
 }

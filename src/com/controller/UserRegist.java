@@ -22,7 +22,6 @@ public class UserRegist extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String userId = request.getParameter("userId");
 		String userPsw = request.getParameter("userPsw");
-		String reuserPsw = request.getParameter("reuserPsw");
 		String userAlice = request.getParameter("userAlice");
 		String userEmail = request.getParameter("userEmail");
 		String userSex = request.getParameter("userSex");
@@ -35,20 +34,18 @@ public class UserRegist extends HttpServlet {
 			request.getRequestDispatcher("regist.jsp").forward(request, response);
 			return;
 		}
-		if(userPsw.equals(reuserPsw) == false) {
-			request.setAttribute("error","密码和确认密码必须相同");
-			request.getRequestDispatcher("regist.jsp").forward(request, response);
-			return;
-		}
+
 		if(userService.findUserById(userId) != null) {
 			request.setAttribute("error","账户已经存在");
 			request.getRequestDispatcher("regist.jsp").forward(request, response);
 			return;
 		}
-		User user = new User(userId, reuserPsw, userAlice, userEmail, userSex, null, reuserPsw, 0, null, null, null, null);
-	
+		User users =new User(userId,userPsw,userAlice,userEmail,userSex,null,0, null,null,null,null);
+		userService.addUser(users);
+		request.getRequestDispatcher("register.jsp").forward(request, response);
+		return;
 	}
-
+	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

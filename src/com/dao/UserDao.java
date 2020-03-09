@@ -40,8 +40,6 @@ public class UserDao {
 	
 	/**
 	 * 把人员信息添加到数据库
-	 * @param cake--需要添加的蛋糕信息
-	 * @return 1-成功 0-失败
 	 */
 	
 	public  int addUser(User users) {
@@ -49,14 +47,14 @@ public class UserDao {
 		PreparedStatement ps = null;
 		try {
 			conn = BaseDao.getConnection();
-			String sql="insert into bbs_user(userId,userPsw,userAlice,userEmail,rePassword) values(?,?,?,?,?)";
+			String sql="insert into bbs_user(userId,userPsw,userAlice,userEmail,userSex) values(?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			return BaseDao.alter(ps, new Object[] {
 					users.getUserId(),
 					users.getUserAlice(),
 					users.getUserEmail(),
 					users.getUserPsw(),
-					users.getrePassword()
+					users.getUserSex()
 			});
 		} catch (Exception e) {e.printStackTrace();}
 		finally {
